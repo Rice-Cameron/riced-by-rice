@@ -1,0 +1,195 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+    "spacing": 4,
+
+    "modules-left": [
+        "hyprland/workspaces",
+        "hyprland/submap"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "idle_inhibitor",
+        "pulseaudio",
+        "pulseaudio/slider",
+        "pulseaudio#microphone",
+        "network",
+        "cpu",
+        "memory",
+        "battery",
+        "clock",
+        "tray",
+        "custom/power"
+    ],
+
+    // Virtual desktops (Always show at least 4)
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "sort-by": "number",
+        "on-click": "activate",
+        "format": "{name}",
+        "persistent-workspaces": {
+            "*": [1, 2, 3, 4]
+        }
+    },
+
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>",
+        "tooltip": false
+    },
+
+
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 50,
+        "separate-outputs": true
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": true,
+        "tooltip-format-activated": "Idle Inhibitor: Active",
+        "tooltip-format-deactivated": "Idle Inhibitor: Inactive",
+        "align": 0.5,
+        "justify": "center"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 2,
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "align": 0.5,
+        "justify": "center",
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "pavucontrol -t 3"
+    },
+
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "tooltip": true,
+        "tooltip-format": "Microphone: {volume}%",
+        "tooltip-format-source-muted": "Microphone: Muted",
+        "align": 0.5,
+        "justify": "center",
+        "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +2%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -2%",
+        "scroll-step": 2,
+        "on-click-right": "pavucontrol -t 4"
+    },
+
+    "network": {
+        "format-wifi": "{essid} {icon}",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) via {gwaddr} 󰖩",
+        "tooltip-format-ethernet": "{ifname} via {gwaddr} 󰈀",
+        "format-linked": "{ifname} (No IP) 󰈀",
+        "format-disconnected": "󰤮 Disconnected",
+        "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "align": 0.5,
+        "justify": "center"
+    },
+
+    "cpu": {
+        "format": "{usage}% ",
+        "tooltip": true,
+        "interval": 2,
+        "align": 0.5,
+        "justify": "center"
+    },
+
+    "memory": {
+        "format": "{}% ",
+        "tooltip-format": "RAM: {used:0.1f}GiB / {total:0.1f}GiB ({percentage}%)",
+        "interval": 2,
+        "align": 0.5,
+        "justify": "center"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% 󰂄",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["󰂃", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "align": 0.5,
+        "justify": "center"
+    },
+
+    // Clock with AM/PM format
+    "clock": {
+        "format": "{:%I:%M %p} ",
+        "format-alt": "{:%A, %B %d, %Y  %I:%M %p} ",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#f0f4f8'><b>{}</b></span>",
+                "days": "<span color='#c8d0da'><b>{}</b></span>",
+                "weeks": "<span color='#6c7689'><b>W{}</b></span>",
+                "weekdays": "<span color='#7e98b5'><b>{}</b></span>",
+                "today": "<span color='#88a4c2'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        },
+        "align": 0.5,
+        "justify": "center"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+
+    "custom/power": {
+        "format": "⏻",
+        "tooltip": false,
+        "menu": "on-click",
+        "menu-file": "$HOME/.config/waybar/power_menu.xml",
+        "menu-actions": {
+            "shutdown": "systemctl poweroff",
+            "reboot": "systemctl reboot",
+            "suspend": "systemctl suspend",
+            "hibernate": "systemctl hibernate"
+        },
+        "align": 0.5,
+        "justify": "center"
+    }
+}

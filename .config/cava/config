@@ -1,0 +1,32 @@
+## Cava Configuration - Winter Solitude Theme
+
+[general]
+mode = normal
+framerate = 60
+bars = 0
+bar_width = 2
+bar_spacing = 1
+bar_delimiter = 0
+
+[input]
+method = pipewire
+source = auto
+
+[output]
+method = ncurses
+style = stereo
+
+[color]
+gradient = 1
+gradient_count = 6
+gradient_color_1 = '#2d3342'
+gradient_color_2 = '#474f5f'
+gradient_color_3 = '#6c8aa8'
+gradient_color_4 = '#7e98b5'
+gradient_color_5 = '#88a4c2'
+gradient_color_6 = '#d0d7de'
+
+[smoothing]
+monstercat = 1
+waves = 0
+noise_reduction = 0.77

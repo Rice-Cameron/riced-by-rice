@@ -1,0 +1,382 @@
+/* =============================================================================
+ * Waybar Stylesheet - Universal Dynamic Themed
+ * Controlled via ~/.config/waybar/colors.css
+ * Strict Square Geometry (No Rounded Corners)
+ * ============================================================================= */
+
+@import "colors.css";
+
+/* Universal Reset: Enforce Strict Square Geometry */
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NFM", "JetBrains Mono", monospace;
+    font-size: 13px;
+    font-weight: 600;
+    min-height: 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+
+/* The Bar Container */
+window#waybar {
+    background-color: @bg;
+    border-bottom: 2px solid @border_inactive;
+    color: @fg;
+    transition-property: background-color;
+    transition-duration: .3s;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/* Button Reset */
+button {
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+}
+
+/* -----------------------------------------------------------------------------
+ * Workspaces (Virtual Desktops) - Top Left Corner
+ * ----------------------------------------------------------------------------- */
+#workspaces {
+    margin: 2px 4px;
+    padding: 0;
+    background-color: transparent;
+}
+
+#workspaces button {
+    padding: 0 10px;
+    margin: 1px 2px;
+    background-color: @surface;
+    color: @muted;
+    border: 1px solid @border;
+    border-radius: 0px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+/* Persistent workspaces (inactive) */
+#workspaces button.persistent {
+    color: @muted;
+}
+
+/* Empty persistent workspaces */
+#workspaces button.empty {
+    background-color: @bg;
+    color: @muted;
+    border: 1px solid @border_inactive;
+}
+
+/* Hover on workspace buttons */
+#workspaces button:hover {
+    background-color: @surface_card;
+    color: @fg;
+    border: 1px solid @highlight;
+}
+
+/* Active / Focused workspace */
+#workspaces button.active,
+#workspaces button.focused {
+    background-color: @highlight;
+    color: @bg;
+    border: 1px solid @highlight;
+    font-weight: 800;
+}
+
+/* Urgent workspace */
+#workspaces button.urgent {
+    background-color: @red;
+    color: @fg;
+    border: 1px solid @red;
+    font-weight: 800;
+}
+
+/* Submap / Mode */
+#submap,
+#mode {
+    background-color: @magenta;
+    color: @fg;
+    padding: 0 10px;
+    margin: 3px 2px;
+    border: 1px solid @magenta;
+    border-radius: 0px;
+    font-weight: bold;
+}
+
+/* -----------------------------------------------------------------------------
+ * Center Module - Focused Window Title
+ * ----------------------------------------------------------------------------- */
+#window {
+    background-color: @surface;
+    color: @highlight;
+    padding: 0 14px;
+    margin: 3px 0;
+    border: 1px solid @border;
+    border-bottom: 2px solid @accent;
+    border-radius: 0px;
+    font-weight: 500;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+    border: none;
+}
+
+/* -----------------------------------------------------------------------------
+ * Right Modules
+ * ----------------------------------------------------------------------------- */
+#idle_inhibitor,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#battery,
+#clock,
+#tray,
+#custom-power {
+    background-color: @surface;
+    color: @highlight;
+    padding: 0 10px;
+    margin: 3px 2px;
+    border: 1px solid @border;
+    border-bottom: 2px solid @accent;
+    border-radius: 0px;
+}
+
+/* Interactive Hover States */
+#idle_inhibitor:hover,
+#pulseaudio:hover,
+#network:hover,
+#cpu:hover,
+#memory:hover,
+#clock:hover,
+#custom-power:hover {
+    background-color: @surface_card;
+    border-color: @highlight;
+}
+
+/* Idle Inhibitor - Centered */
+#idle_inhibitor {
+    color: @highlight;
+    border-bottom: 2px solid @accent;
+    padding: 0 13px 0 7px;
+}
+
+#idle_inhibitor.activated {
+    background-color: @highlight;
+    color: @bg;
+    border-color: @highlight;
+}
+
+/* PulseAudio / PipeWire Volume & Microphone - Centered in the left gap */
+#pulseaudio {
+    color: @highlight;
+    border-bottom: 2px solid @accent;
+    margin: 3px 2px;
+    min-width: 56px;
+    padding: 0 14px 0 6px;
+}
+
+#pulseaudio.muted {
+    background-color: @bg;
+    color: @muted;
+    border: 1px solid @border_inactive;
+    border-bottom: 2px solid @border;
+    margin: 3px 2px;
+    min-width: 56px;
+    padding: 0 14px 0 6px;
+}
+
+/* Independent Microphone Mute Toggle */
+#pulseaudio.microphone {
+    color: @highlight;
+    border-bottom: 2px solid @accent;
+    margin: 3px 2px;
+    padding: 0 10px;
+    min-width: 14px;
+}
+
+#pulseaudio.microphone.source-muted {
+    background-color: @bg;
+    color: @muted;
+    border: 1px solid @border_inactive;
+    border-bottom: 2px solid @border;
+    margin: 3px 2px;
+    padding: 0 10px;
+    min-width: 14px;
+}
+
+/* PulseAudio Draggable Volume Slider - Sleek, Minimal Square Bar */
+#pulseaudio-slider {
+    background-color: @surface;
+    padding: 0 8px;
+    margin: 3px 2px;
+    border: 1px solid @border;
+    border-radius: 0px;
+    min-width: 70px;
+}
+
+#pulseaudio-slider slider,
+scale#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#pulseaudio-slider trough,
+scale#pulseaudio-slider trough {
+    min-height: 6px;
+    min-width: 60px;
+    border-radius: 0px;
+    background-color: @bg;
+    border: 1px solid @border;
+    box-shadow: none;
+    margin: 0px;
+}
+
+#pulseaudio-slider highlight,
+scale#pulseaudio-slider highlight {
+    min-height: 6px;
+    border: none;
+    border-radius: 0px;
+    background-color: @accent;
+    box-shadow: none;
+    margin: 0px;
+}
+
+/* Network */
+#network {
+    color: @highlight;
+    border-bottom: 2px solid @accent;
+    padding: 0 12px 0 7px;
+}
+
+#network.disconnected {
+    background-color: @magenta;
+    color: @fg;
+    border-bottom: 2px solid @red;
+}
+
+/* Hardware Stats (CPU & Memory) */
+#cpu {
+    color: @highlight;
+    border-bottom: 2px solid @accent;
+    min-width: 50px;
+    padding: 0 10px 0 6px;
+}
+
+#memory {
+    color: @highlight;
+    border-bottom: 2px solid @accent;
+    min-width: 50px;
+    padding: 0 9px 0 7px;
+}
+
+
+/* Battery */
+#battery {
+    color: @highlight;
+    border-bottom: 2px solid @accent;
+    min-width: 50px;
+    padding: 0 10px 0 7px;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @highlight;
+    border-bottom: 2px solid @accent;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @red;
+    color: @fg;
+    border-bottom: 2px solid @red;
+}
+
+/* Clock (Imperial AM/PM) */
+#clock {
+    color: @highlight;
+    border-bottom: 2px solid @accent;
+    font-weight: 700;
+    padding: 0 12px 0 8px;
+}
+
+/* System Tray */
+#tray {
+    padding: 0 6px;
+    border-bottom: 2px solid @accent;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @red;
+}
+
+/* Power Menu Button */
+#custom-power {
+    color: @highlight;
+    border-bottom: 2px solid @accent;
+    font-size: 13px;
+    padding: 0 10px 0 7px;
+    margin: 3px 2px;
+    min-width: 14px;
+}
+
+#custom-power:hover {
+    background-color: @red;
+    color: @bg;
+    border-color: @red;
+    border-bottom: 2px solid @red;
+}
+
+/* -----------------------------------------------------------------------------
+ * Tooltips & Menus (Strict Square Geometry)
+ * ----------------------------------------------------------------------------- */
+tooltip {
+    background-color: @bg;
+    border: 1px solid @border;
+    border-radius: 0px;
+    padding: 6px;
+}
+
+tooltip label {
+    color: @fg;
+    font-size: 12px;
+}
+
+menu {
+    background-color: @bg;
+    border: 1px solid @border;
+    border-radius: 0px;
+    padding: 4px;
+}
+
+menuitem {
+    background-color: transparent;
+    color: @fg;
+    border-radius: 0px;
+    padding: 5px 10px;
+}
+
+menuitem:hover {
+    background-color: @surface;
+    color: @fg;
+}
+
+separator {
+    background-color: @border;
+}

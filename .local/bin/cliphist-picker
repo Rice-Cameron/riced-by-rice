@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+selected=$(cliphist list | hyprlauncher --dmenu)
+if [ -n "$selected" ]; then
+    echo "$selected" | cliphist decode | wl-copy
+fi
