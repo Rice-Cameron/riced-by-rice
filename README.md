@@ -4,7 +4,7 @@ A minimalist, sharp, and cohesive desktop setup powered by **Arch Linux** and **
 
 ---
 
-## 🖥️ Overview & Setup
+## Overview & Setup
 
 This repository is maintained as a **bare Git repository** mapped directly into `$HOME`, keeping configurations cleanly tracked without messy symlink managers.
 
@@ -31,7 +31,7 @@ This repository is maintained as a **bare Git repository** mapped directly into 
 
 ---
 
-## 🎨 Design Philosophy & Theming
+## Design Philosophy & Theming
 
 ### Strict Square Geometry
 All UI elements adhere to a uniform, clean square aesthetic with zero border-radius (`rounding = 0px` across Hyprland, Waybar, GTK 3/4, Mako, and Hyprlauncher). Paired with subtle drop shadows and multi-pass background blur, the environment feels crisp, modern, and distraction-free.
@@ -63,7 +63,7 @@ theme current           # Display active theme colors
 
 ---
 
-## ⌨️ Keybindings
+## Keybindings
 
 The primary modifier key is **`SUPER`** (Windows key).
 
@@ -112,7 +112,7 @@ The primary modifier key is **`SUPER`** (Windows key).
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 ~
@@ -159,7 +159,7 @@ The primary modifier key is **`SUPER`** (Windows key).
 
 ---
 
-## 🔧 Dotfiles Management
+## Dotfiles Management
 
 These dotfiles are tracked using a **bare git repository** located at `~/.dotfiles`. This avoids extra tools and symlinks.
 
