@@ -181,7 +181,7 @@ dots push
 
 1. **Clone repository as a bare repo**:
    ```bash
-   git clone --bare git@github.com:Rice-Cameron/dotfiles.git $HOME/.dotfiles
+   git clone --bare git@github.com:Rice-Cameron/riced-by-rice.git $HOME/.dotfiles
    ```
 
 2. **Define temporary alias**:
