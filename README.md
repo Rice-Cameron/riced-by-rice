@@ -1,4 +1,4 @@
-# Rice's Dotfiles
+# 🍚 Riced by Rice
 
 A minimalist, sharp, and cohesive desktop setup powered by **Arch Linux** and **Hyprland** (configured via Lua), featuring strict square geometry, a unified dynamic theming system, and carefully tuned tooling.
 
