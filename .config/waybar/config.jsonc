@@ -46,7 +46,13 @@
     "hyprland/window": {
         "format": "{title}",
         "max-length": 50,
-        "separate-outputs": true
+        "separate-outputs": true,
+        "align": 0.5,
+        "justify": "center",
+        "icon-spacing": 0,
+        "rewrite": {
+            "(.*\\S)\\s+$": "$1"
+        }
     },
 
     "idle_inhibitor": {
