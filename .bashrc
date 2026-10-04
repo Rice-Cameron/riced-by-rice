@@ -14,3 +14,4 @@ PS1='[\u@\h \W]\$ '
 
 # Added by Antigravity CLI installer
 export PATH="/home/cameronrice/.local/bin:$PATH"
+. "$HOME/.cargo/env"

@@ -465,6 +465,37 @@ splash = false
                 f.write(content)
             subprocess.run(["hyprctl", "hyprpaper", "wallpaper", f"DP-1,{wp_path},cover"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
+def apply_hyprtoolkit(t):
+    conf = Path.home() / ".config" / "hypr" / "hyprtoolkit.conf"
+    bg = t['background'].lstrip("#").upper()
+    txt = t['foreground'].lstrip("#").upper()
+    base = t.get('surface', '#1c2029').lstrip("#").upper()
+    alt_base = t.get('selection_bg', t.get('border', '#282e3b')).lstrip("#").upper()
+    bright_txt = t.get('colors', {}).get('bright_white', '#e8edf2').lstrip("#").upper()
+    link_txt = t.get('url', '#8ab4c8').lstrip("#").upper()
+    acc = t.get('highlight', '#88a4c2').lstrip("#").upper()
+    acc_sec = t.get('accent', '#6c8aa8').lstrip("#").upper()
+    content = f"""accent = 0xFF{acc}
+accent_secondary = 0xFF{acc_sec}
+background = 0xFF{bg}
+text = 0xFF{txt}
+base = 0xFF{base}
+alternate_base = 0xFF{alt_base}
+bright_text = 0xFF{bright_txt}
+link_text = 0xFF{link_txt}
+rounding_large = 0
+rounding_small = 0
+font_family = JetBrainsMono Nerd Font
+font_family_monospace = JetBrainsMono Nerd Font Mono
+font_size = 10
+h1_size = 13
+h2_size = 12
+h3_size = 11
+small_font_size = 9
+"""
+    with open(conf, "w") as f:
+        f.write(content)
+
 def apply_all():
     t = load_theme()
     print(f"Applying theme: \033[1;36m{t['name']}\033[0m ({t.get('id', 'custom')})")
@@ -475,9 +506,10 @@ def apply_all():
     apply_gtk(t)
     apply_qt_kde(t)
     apply_hyprlauncher(t)
+    apply_hyprtoolkit(t)
     apply_mako(t)
     apply_wallpaper(t)
-    print("\033[1;32m✓\033[0m Applied theme across Hyprland, Waybar, Kitty, Neovim, Dolphin, GTK, Mako, and Hyprlauncher!")
+    print("\033[1;32m✓\033[0m Applied theme across Hyprland, Waybar, Kitty, Neovim, Dolphin, GTK, Mako, Hyprlauncher, and Hyprtoolkit!")
 
 def list_themes():
     current_name = None
